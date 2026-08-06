@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Leaf, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { NAV_LINKS, waLink } from "@/lib/site"
 
@@ -41,11 +41,15 @@ export function Navbar() {
           )}
         >
           <a href="#beranda" className="flex items-center gap-2 font-serif text-xl font-bold text-primary">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-md shadow-primary/30">
-              <Leaf className="size-5" aria-hidden="true" />
-            </span>
-            Yochi Snack
-          </a>
+  <span className="flex size-10 items-center justify-center overflow-hidden rounded-xl shadow-md shadow-primary/30">
+    <img
+      src="/images/iconyochi.png"
+      alt="Yochi Snack"
+      className="size-full object-cover"
+    />
+  </span>
+  Yochi Snack
+</a>
 
           <ul className="hidden items-center gap-1 lg:flex">
             {NAV_LINKS.map((link) => (

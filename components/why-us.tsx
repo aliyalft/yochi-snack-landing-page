@@ -34,7 +34,7 @@ const stats = [
 export function WhyUs() {
   return (
     <section id="kenapa-kami" className="relative overflow-hidden py-20 sm:py-28">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background to-cream/60" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-b from-background to-cream/60" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="mb-3 inline-block rounded-full bg-accent/60 px-4 py-1.5 text-sm font-semibold text-primary">

@@ -13,7 +13,7 @@ export function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-16 sm:pt-32"
     >
       {/* Background gradient + decor */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-cream via-background to-accent/30" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-b from-cream via-background to-accent/30" />
       <div className="absolute -left-24 top-24 -z-10 size-72 rounded-full bg-secondary/40 blur-3xl" aria-hidden="true" />
       <div className="absolute -right-16 bottom-10 -z-10 size-80 rounded-full bg-yellow/30 blur-3xl" aria-hidden="true" />
       <Leaf className="absolute left-[8%] top-[22%] -z-10 size-16 rotate-12 text-leaf/30 animate-float" aria-hidden="true" />

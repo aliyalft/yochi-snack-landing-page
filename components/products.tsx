@@ -46,7 +46,7 @@ export function Products() {
           {products.map((p, i) => (
             <Reveal key={p.name} delay={i * 120}>
               <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border/70 bg-card shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/15">
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-4/3 overflow-hidden">
                   <Image
                     src={p.image || "/placeholder.svg"}
                     alt={p.alt}
