@@ -41,13 +41,15 @@ export function Navbar() {
           )}
         >
           <a href="#beranda" className="flex items-center gap-2 font-serif text-xl font-bold text-primary">
-  <span className="flex size-10 items-center justify-center overflow-hidden rounded-xl shadow-md shadow-primary/30">
-    <img
-      src="/images/iconyochi.png"
-      alt="Yochi Snack"
-      className="size-full object-cover"
-    />
-  </span>
+  <span className="flex size-14 items-center justify-center">
+  <img
+    src="/images/iconyochi.png"
+    alt="Yochi Snack"
+    width={70}
+    height={70}
+    className="object-contain"
+  />
+</span>
   Yochi Snack
 </a>
 
