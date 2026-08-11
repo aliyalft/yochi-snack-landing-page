@@ -60,14 +60,8 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: [
-      {
-        url: "/images/iconyochi.png",
-        type: "image/png",
-      },
-    ],
-    shortcut: "/images/iconyochi.png",
-    apple: "/images/iconyochi.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
   },
 
   robots: {
