@@ -1,79 +1,92 @@
-import { Leaf, Carrot, Sparkles, Heart } from "lucide-react"
-import { Reveal } from "@/components/reveal"
-import { Counter } from "@/components/counter"
+import {
+  Leaf,
+  Carrot,
+  Cookie,
+  Heart,
+} from "lucide-react"
 
-const cards = [
+import { Reveal } from "@/components/reveal"
+
+const reasons = [
   {
     icon: Leaf,
     title: "Bahan Berkualitas",
-    desc: "Dipilih dari bahan segar dan terbaik untuk rasa maksimal.",
+    desc: "Dipilih dengan perhatian untuk menghasilkan rasa yang konsisten dan nikmat.",
   },
   {
     icon: Carrot,
-    title: "Menggunakan Sayuran Pilihan",
-    desc: "Bayam dan wortel asli sebagai bahan utama setiap stik.",
+    title: "Sayuran Pilihan",
+    desc: "Bayam dan wortel menjadi bagian utama dari varian stik Yochi Snack.",
   },
   {
-    icon: Sparkles,
+    icon: Cookie,
     title: "Renyah & Gurih",
-    desc: "Tekstur crispy dengan rasa gurih yang bikin nagih.",
+    desc: "Tekstur renyah dengan rasa gurih yang cocok untuk teman santai.",
   },
   {
     icon: Heart,
-    title: "Disukai Anak hingga Dewasa",
-    desc: "Camilan favorit keluarga untuk segala suasana.",
+    title: "Untuk Seluruh Keluarga",
+    desc: "Camilan praktis yang bisa dinikmati bersama dalam berbagai suasana.",
   },
-]
-
-const stats = [
-  { value: 100, suffix: "%", label: "Bahan Berkualitas" },
-  { value: 100, suffix: "%", label: "Produk Homemade" },
-  { value: 5, suffix: "★", label: "Rasa Favorit Keluarga" },
 ]
 
 export function WhyUs() {
   return (
-    <section id="kenapa-kami" className="relative overflow-hidden py-20 sm:py-28">
-      <div className="absolute inset-0 -z-10 bg-linear-to-b from-background to-cream/60" />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="mb-3 inline-block rounded-full bg-accent/60 px-4 py-1.5 text-sm font-semibold text-primary">
-            Keunggulan
-          </span>
-          <h2 className="text-balance font-serif text-3xl font-bold text-foreground sm:text-4xl">
-            Kenapa Memilih Kami
-          </h2>
-          <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
-            Kami berkomitmen menghadirkan cemilan sehat yang lezat dan aman untuk seluruh keluarga.
-          </p>
+    <section
+      id="kenapa-kami"
+      className="relative overflow-hidden bg-primary/5 py-16 sm:py-20 lg:py-24"
+    >
+      {/* Soft glow */}
+      <div
+        className="pointer-events-none absolute -left-32 bottom-0 size-96 rounded-full bg-leaf/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6">
+        {/* Heading */}
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="inline-flex rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
+              Keunggulan
+            </span>
+
+            <h2 className="mt-5 font-serif text-3xl font-bold text-foreground sm:text-4xl">
+              Kenapa Memilih Kami
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-muted-foreground sm:text-base sm:leading-relaxed">
+              Kami menghadirkan camilan yang dibuat dengan perhatian pada
+              bahan, rasa, dan proses.
+            </p>
+          </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {cards.map((card, i) => (
-            <Reveal key={card.title} delay={i * 90}>
-              <article className="group h-full rounded-3xl border border-border/70 bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10">
-                <span className="mb-5 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
-                  <card.icon className="size-7" aria-hidden="true" />
+        {/* Cards */}
+        <div className="mt-9 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+          {reasons.map((item, index) => (
+            <Reveal key={item.title} delay={index * 100}>
+              <div className="group h-full rounded-[1.75rem] border border-primary/10 bg-card p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 sm:rounded-3xl sm:p-7">
+                {/* Icon */}
+                <span className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary sm:size-12 sm:rounded-2xl">
+                  <item.icon
+                    className="size-5 sm:size-6"
+                    aria-hidden="true"
+                  />
                 </span>
-                <h3 className="font-serif text-lg font-bold text-foreground">{card.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{card.desc}</p>
-              </article>
+
+                {/* Title */}
+                <h3 className="mt-5 font-serif text-lg font-bold leading-snug text-foreground sm:mt-6 sm:text-xl">
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p className="mt-2.5 text-sm leading-6 text-muted-foreground sm:mt-3 sm:leading-7">
+                  {item.desc}
+                </p>
+              </div>
             </Reveal>
           ))}
         </div>
-
-        <Reveal className="mt-14">
-          <div className="grid gap-6 rounded-3xl border border-primary/15 bg-card/70 p-8 shadow-sm backdrop-blur sm:grid-cols-3">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="font-serif text-4xl font-bold text-primary sm:text-5xl">
-                  <Counter to={s.value} suffix={s.suffix} />
-                </p>
-                <p className="mt-2 text-sm font-medium text-muted-foreground">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
       </div>
     </section>
   )

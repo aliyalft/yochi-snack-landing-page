@@ -1,102 +1,170 @@
 "use client"
 
 import Image from "next/image"
-import { Leaf, ShoppingBag, Star } from "lucide-react"
+import { Leaf, ShoppingBag } from "lucide-react"
+
+import { Reveal } from "@/components/reveal"
 import { waLink } from "@/lib/site"
 
 export function Hero() {
-  const orderLink = waLink("Halo Yochi Snack, saya ingin memesan cemilan sehat.")
+  const orderLink = waLink(
+    "Halo Yochi Snack, saya ingin memesan produk Yochi Snack."
+  )
+
+  const goToProducts = () => {
+    const target = document.getElementById("produk")
+
+    if (!target) return
+
+    window.scrollTo({
+      top: target.offsetTop,
+      behavior: "auto",
+    })
+  }
 
   return (
     <section
       id="beranda"
-      className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-16 sm:pt-32"
+      className="relative isolate overflow-hidden border-b border-primary/10 bg-[#fbf8ef] pb-16 pt-28 sm:pb-20 sm:pt-32 lg:flex lg:min-h-[700px] lg:items-center lg:pb-10"
     >
-      {/* Background gradient + decor */}
-      <div className="absolute inset-0 -z-10 bg-linear-to-b from-cream via-background to-accent/30" />
-      <div className="absolute -left-24 top-24 -z-10 size-72 rounded-full bg-secondary/40 blur-3xl" aria-hidden="true" />
-      <div className="absolute -right-16 bottom-10 -z-10 size-80 rounded-full bg-yellow/30 blur-3xl" aria-hidden="true" />
-      <Leaf className="absolute left-[8%] top-[22%] -z-10 size-16 rotate-12 text-leaf/30 animate-float" aria-hidden="true" />
-      <Leaf className="absolute right-[10%] top-[30%] -z-10 size-10 -rotate-12 text-primary/20 animate-float-slow" aria-hidden="true" />
+      {/* Soft colorful background */}
+      <div
+        className="pointer-events-none absolute -left-40 top-16 size-[34rem] rounded-full bg-primary/8 blur-3xl"
+        aria-hidden="true"
+      />
 
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
-        {/* Text */}
-        <div className="animate-in-hero flex flex-col items-start text-left">
-          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-card/70 px-4 py-1.5 text-sm font-medium text-primary shadow-sm backdrop-blur">
-            <Leaf className="size-4" aria-hidden="true" />
-            Cemilan sehat berbahan sayuran
-          </span>
-          <h1 className="text-balance font-serif text-4xl font-bold leading-[1.1] text-foreground sm:text-5xl lg:text-6xl">
-            Cemilan Sehat dari Sayuran, <span className="text-primary">Renyah</span> di Setiap Gigitan
-          </h1>
-          <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Nikmati stik bayam dan stik wortel yang dibuat dari bahan berkualitas. Cocok untuk keluarga,
-            anak-anak, maupun teman santai.
-          </p>
+      <div
+        className="pointer-events-none absolute -right-36 top-20 size-[34rem] rounded-full bg-yellow/14 blur-3xl"
+        aria-hidden="true"
+      />
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+      <div
+        className="pointer-events-none absolute bottom-[-9rem] left-1/2 h-[22rem] w-[70%] -translate-x-1/2 rounded-full bg-leaf/7 blur-3xl"
+        aria-hidden="true"
+      />
+
+      {/* Soft fade menuju section berikutnya */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-primary/[0.035]"
+        aria-hidden="true"
+      />
+
+      {/* Main content */}
+      <div className="relative z-20 mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* TEXT */}
+          <Reveal>
+            <div className="max-w-xl">
+              <h1 className="text-balance font-serif text-[2.25rem] font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[4.15rem] lg:leading-[1.08]">
+                Cemilan Sehat dari Sayuran,{" "}
+                <span className="text-primary">Renyah</span> di Setiap Gigitan
+              </h1>
+
+              <p className="mt-7 max-w-lg text-base leading-8 text-muted-foreground sm:text-lg sm:leading-9">
+                Nikmati stik bayam dan stik wortel yang dibuat dari bahan
+                berkualitas. Cocok untuk keluarga, anak-anak, maupun teman
+                santai.
+              </p>
+
+              {/* Desktop buttons */}
+              <div className="mt-8 hidden items-center gap-4 lg:flex">
+                <a
+                  href={orderLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-7 py-4 font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90"
+                >
+                  <ShoppingBag
+                    className="size-5"
+                    aria-hidden="true"
+                  />
+
+                  Pesan Sekarang
+                </a>
+
+                <a
+                  href="#produk"
+                  className="inline-flex items-center justify-center rounded-2xl border border-primary/20 bg-white/80 px-7 py-4 font-semibold text-primary shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
+                >
+                  Lihat Produk
+                </a>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* PHOTO */}
+          <Reveal delay={100}>
+            <div className="pointer-events-none relative -mt-4 sm:-mt-2 lg:mt-0">
+              <div className="relative mx-auto w-full max-w-[620px]">
+                {/* Glow behind image */}
+                <div
+                  className="pointer-events-none absolute -inset-6 rounded-[3rem] bg-yellow/8 blur-3xl"
+                  aria-hidden="true"
+                />
+
+                <div
+                  className="pointer-events-none absolute inset-x-8 bottom-0 h-24 rounded-full bg-primary/10 blur-3xl"
+                  aria-hidden="true"
+                />
+
+                {/* Hero image */}
+                <div className="relative overflow-hidden rounded-[2rem] border-4 border-white shadow-[0_22px_60px_rgba(34,139,34,0.13)]">
+                  <Image
+                    src="/images/hero-snacks.png"
+                    alt="Yochi Snack stik bayam dan stik wortel"
+                    width={1200}
+                    height={760}
+                    priority
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+
+                {/* Higienis badge */}
+                <div className="animate-float absolute -bottom-4 right-3 z-20 flex max-w-[210px] items-center gap-2.5 rounded-2xl border border-primary/10 bg-white/95 px-3 py-2.5 shadow-lg backdrop-blur-sm sm:-bottom-5 sm:right-5 sm:max-w-[240px] sm:px-3.5 sm:py-3 lg:max-w-[245px]">
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary sm:size-10">
+                    <Leaf
+                      className="size-5"
+                      aria-hidden="true"
+                    />
+                  </span>
+
+                  <div>
+                    <p className="text-xs font-bold text-foreground sm:text-sm">
+                      Dibuat Higienis
+                    </p>
+
+                    <p className="text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+                      Bersih &amp; terjaga
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* MOBILE BUTTONS - SEJAJAR */}
+          <div className="relative z-[100] mt-8 grid grid-cols-2 gap-3 lg:hidden">
             <a
               href={orderLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="ripple inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/40"
+              className="relative z-[100] inline-flex min-h-14 touch-manipulation items-center justify-center gap-2 rounded-2xl bg-primary px-3 py-3.5 text-center text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-150 active:scale-[0.97] sm:text-base"
             >
-              <ShoppingBag className="size-5" aria-hidden="true" />
+              <ShoppingBag
+                className="size-[18px] shrink-0"
+                aria-hidden="true"
+              />
+
               Pesan Sekarang
             </a>
-            <a
-              href="#produk"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-primary/25 bg-card/70 px-7 py-3.5 text-base font-semibold text-primary shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent/60"
+
+            <button
+              type="button"
+              onPointerDown={goToProducts}
+              className="relative z-[100] inline-flex min-h-14 touch-manipulation select-none items-center justify-center rounded-2xl border border-primary/20 bg-white px-3 py-3.5 text-center text-sm font-semibold text-primary shadow-sm transition-all duration-150 active:scale-[0.97] active:bg-primary/10 sm:text-base"
             >
               Lihat Produk
-            </a>
-          </div>
-
-          <div className="mt-9 flex items-center gap-5">
-            <div className="flex items-center gap-1 text-yellow">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-5 fill-yellow" aria-hidden="true" />
-              ))}
-            </div>
-            <p className="text-sm text-muted-foreground">
-              <span className="font-semibold text-foreground">Disukai keluarga</span> — gurih, renyah &amp; sehat
-            </p>
-          </div>
-        </div>
-
-        {/* Image */}
-        <div className="relative animate-in-hero" style={{ animationDelay: "150ms" }}>
-          <div className="absolute inset-0 -z-10 translate-y-6 scale-95 rounded-[2.5rem] bg-primary/15 blur-2xl" aria-hidden="true" />
-          <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-card shadow-2xl shadow-primary/20 animate-float-slow">
-            <Image
-              src="/images/hero-snacks.png"
-              alt="Aneka stik sayuran renyah Yochi Snack dengan bayam dan wortel segar"
-              width={720}
-              height={720}
-              priority
-              className="h-full w-full object-cover"
-            />
-          </div>
-
-          {/* Floating badge cards */}
-          <div className="glass absolute -left-3 top-8 flex items-center gap-2 rounded-2xl border border-border/60 px-4 py-3 shadow-lg sm:-left-6 animate-float">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-leaf/20 text-leaf">
-              <Leaf className="size-5" aria-hidden="true" />
-            </span>
-            <div>
-              <p className="text-sm font-bold text-foreground">100% Sayuran</p>
-              <p className="text-xs text-muted-foreground">Bahan pilihan</p>
-            </div>
-          </div>
-
-          <div className="glass absolute -bottom-4 right-2 flex items-center gap-2 rounded-2xl border border-border/60 px-4 py-3 shadow-lg sm:right-6 animate-float-slow">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-yellow/25 text-yellow-foreground">
-              <Star className="size-5 fill-current" aria-hidden="true" />
-            </span>
-            <div>
-              <p className="text-sm font-bold text-foreground">Best Seller</p>
-              <p className="text-xs text-muted-foreground">Stik Bayam</p>
-            </div>
+            </button>
           </div>
         </div>
       </div>

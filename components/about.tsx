@@ -1,64 +1,120 @@
-import Image from "next/image"
-import { Leaf, Sprout, Sparkles, Heart } from "lucide-react"
 import { Reveal } from "@/components/reveal"
+import { Counter } from "@/components/counter"
 
-const features = [
-  { icon: Leaf, label: "Bahan Berkualitas" },
-  { icon: Sprout, label: "Lebih Sehat" },
-  { icon: Sparkles, label: "Renyah" },
-  { icon: Heart, label: "Cocok Untuk Semua Usia" },
+const stats = [
+  {
+    value: 100,
+    suffix: "%",
+    label: "Bahan Berkualitas",
+  },
+  {
+    value: 100,
+    suffix: "%",
+    label: "Produk Homemade",
+  },
+  {
+    value: 5,
+    suffix: "★",
+    label: "Rasa Favorit Keluarga",
+  },
 ]
 
 export function About() {
   return (
-    <section id="tentang" className="relative overflow-hidden py-20 sm:py-28">
-      <Leaf className="absolute right-[6%] top-16 -z-10 size-14 rotate-45 text-leaf/15" aria-hidden="true" />
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
-        <Reveal className="relative order-2 lg:order-1">
-          <div className="absolute -left-4 -top-4 -z-10 size-32 rounded-3xl bg-yellow/25" aria-hidden="true" />
-          <div className="overflow-hidden rounded-[2rem] border-4 border-card shadow-xl shadow-primary/15">
-            <Image
-              src="/images/about-snacks.png"
-              alt="Proses pembuatan cemilan sehat Yochi Snack dengan sayuran segar"
-              width={640}
-              height={640}
-              className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-            />
-          </div>
-          <div className="glass absolute -bottom-5 left-6 rounded-2xl border border-border/60 px-5 py-3 shadow-lg">
-            <p className="font-serif text-2xl font-bold text-primary">Higienis</p>
-            <p className="text-xs text-muted-foreground">Diproses dengan standar bersih</p>
+    <section
+      id="tentang"
+      className="relative overflow-hidden bg-primary/5 py-16 sm:py-20 lg:py-24"
+    >
+      {/* Soft decoration sama nuansanya dengan Keunggulan */}
+      <div
+        className="absolute -right-32 top-0 size-96 rounded-full bg-yellow/8 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div
+        className="absolute -left-32 bottom-0 size-96 rounded-full bg-leaf/8 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        {/* ABOUT */}
+        <Reveal>
+          <div className="mx-auto max-w-4xl text-center">
+            <span className="inline-flex rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
+              Tentang Kami
+            </span>
+
+            <h2 className="mt-5 text-balance font-serif text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+              Cerita di Balik Yochi Snack
+            </h2>
+
+            <p className="mx-auto mt-7 max-w-3xl text-pretty text-base leading-8 text-muted-foreground sm:text-lg sm:leading-9">
+              Yochi Snack hadir dari keinginan menghadirkan camilan berbahan
+              sayuran yang tetap enak dinikmati. Berawal dari bayam dan wortel,
+              setiap stik dibuat dengan perhatian pada rasa, kualitas bahan,
+              dan proses yang higienis agar bisa menjadi teman camilan sederhana
+              untuk berbagai momen sehari-hari.
+            </p>
           </div>
         </Reveal>
 
-        <div className="order-1 lg:order-2">
-          <Reveal>
-            <span className="mb-3 inline-block rounded-full bg-accent/60 px-4 py-1.5 text-sm font-semibold text-primary">
-              Tentang Kami
-            </span>
-            <h2 className="text-balance font-serif text-3xl font-bold text-foreground sm:text-4xl">
-              Tentang Yochi Snack
-            </h2>
-            <p className="mt-5 text-pretty leading-relaxed text-muted-foreground">
-              Yochi Snack merupakan usaha makanan ringan yang menghadirkan cemilan sehat berbahan dasar
-              sayuran seperti bayam dan wortel. Diproses secara higienis menggunakan bahan berkualitas
-              sehingga menghasilkan stik yang gurih, renyah, dan cocok dinikmati semua kalangan.
-            </p>
-          </Reveal>
+        {/* STATISTICS */}
+        <Reveal delay={120}>
+          <div className="mx-auto mt-10 max-w-5xl overflow-hidden rounded-3xl border border-primary/10 bg-card shadow-sm sm:mt-12">
+            <div className="grid grid-cols-3">
+              {stats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className={`px-2 py-6 text-center sm:px-6 sm:py-8 ${
+                    index !== stats.length - 1
+                      ? "border-r border-primary/10"
+                      : ""
+                  }`}
+                >
+                  <p className="font-serif text-2xl font-bold leading-tight text-primary sm:text-4xl lg:text-5xl">
+                    <Counter
+                      to={stat.value}
+                      suffix={stat.suffix}
+                      duration={1400}
+                    />
+                  </p>
 
-          <div className="mt-8 grid grid-cols-2 gap-4">
-            {features.map((f, i) => (
-              <Reveal key={f.label} delay={i * 80}>
-                <div className="group flex items-center gap-3 rounded-2xl border border-border/70 bg-card p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10">
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform duration-300 group-hover:scale-110">
-                    <f.icon className="size-5" aria-hidden="true" />
-                  </span>
-                  <span className="text-sm font-semibold text-foreground">{f.label}</span>
+                  <p className="mt-2 text-[11px] leading-snug text-muted-foreground sm:text-sm">
+                    {stat.label === "Bahan Berkualitas" ? (
+                      <>
+                        <span className="sm:hidden">
+                          Bahan
+                          <br />
+                          Berkualitas
+                        </span>
+
+                        <span className="hidden sm:inline">
+                          Bahan Berkualitas
+                        </span>
+                      </>
+                    ) : stat.label === "Produk Homemade" ? (
+                      <>
+                        <span className="sm:hidden">
+                          Produk
+                          <br />
+                          Homemade
+                        </span>
+
+                        <span className="hidden sm:inline">
+                          Produk Homemade
+                        </span>
+                      </>
+                    ) : (
+                      stat.label
+                    )}
+                  </p>
                 </div>
-              </Reveal>
-            ))}
+              ))}
+            </div>
+
+            <div className="h-1 w-full bg-gradient-to-r from-primary via-leaf to-yellow" />
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

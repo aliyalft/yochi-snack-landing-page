@@ -1,101 +1,119 @@
+import Image from "next/image"
 import { MapPin, Phone } from "lucide-react"
 import { FaInstagram } from "react-icons/fa"
-import { INSTAGRAM, INSTAGRAM_URL, WA_DISPLAY, waLink, MAPS_URL } from "@/lib/site"
+
+import { NAV_LINKS } from "@/lib/site"
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-        <div className="grid gap-8 md:grid-cols-3">
-
+    <footer className="bg-primary text-white">
+      <div className="mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-16">
+        <div className="grid gap-12 md:grid-cols-3">
           {/* Brand */}
           <div>
-            <h3 className="font-serif text-2xl font-bold">
-              Yochi Snack
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-primary-foreground/80">
-              Cemilan sehat berbahan alami yang cocok untuk menemani
-              aktivitas sehari-hari.
+            <div className="flex items-center gap-4">
+              {/* Logo background */}
+              <div className="flex h-16 w-24 shrink-0 items-center justify-center rounded-2xl bg-white px-2 shadow-sm ring-1 ring-white/40">
+                <Image
+                  src="/images/iconyochi.png"
+                  alt="Logo Yochi Snack"
+                  width={78}
+                  height={50}
+                  className="h-auto w-[78px] object-contain"
+                />
+              </div>
+
+              <h3 className="font-serif text-3xl font-bold text-white">
+                Yochi Snack
+              </h3>
+            </div>
+
+            <p className="mt-5 max-w-md text-base leading-8 text-white/75">
+              Cemilan berbahan sayuran yang gurih dan renyah untuk menemani
+              berbagai momen bersama keluarga.
             </p>
           </div>
 
-          {/* Navigasi */}
+          {/* Menu */}
           <div>
-            <h4 className="font-semibold">
+            <h4 className="text-lg font-bold text-white">
               Menu
             </h4>
 
-            <ul className="mt-3 space-y-2 text-sm text-primary-foreground/80">
-              <li>
-                <a href="#beranda" className="hover:text-white">
-                  Beranda
+            <nav className="mt-5 flex flex-col gap-4">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="w-fit text-base text-white/75 transition-colors duration-300 hover:text-white"
+                >
+                  {link.label}
                 </a>
-              </li>
-              <li>
-                <a href="#produk" className="hover:text-white">
-                  Produk
-                </a>
-              </li>
-              <li>
-                <a href="#tentang" className="hover:text-white">
-                  Tentang Kami
-                </a>
-              </li>
-              <li>
-                <a href="#kontak" className="hover:text-white">
-                  Kontak
-                </a>
-              </li>
-            </ul>
+              ))}
+            </nav>
           </div>
 
-          {/* Kontak */}
+          {/* Contact */}
           <div>
-            <h4 className="font-semibold">
+            <h4 className="text-lg font-bold text-white">
               Hubungi Kami
             </h4>
 
-            <div className="mt-3 space-y-3 text-sm text-primary-foreground/80">
-
+            <div className="mt-5 space-y-4">
+              {/* WhatsApp */}
               <a
-                href={waLink()}
+                href="https://wa.me/6287872038056"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white"
+                className="flex w-fit items-center gap-3 text-base text-white/75 transition-colors duration-300 hover:text-white"
               >
-                <Phone className="size-4" />
-                {WA_DISPLAY}
+                <Phone
+                  className="size-5 shrink-0"
+                  aria-hidden="true"
+                />
+
+                087872038056
               </a>
 
+              {/* Instagram */}
               <a
-                href={INSTAGRAM_URL}
+                href="https://www.instagram.com/yochi_snack/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white"
+                className="flex w-fit items-center gap-3 text-base text-white/75 transition-colors duration-300 hover:text-white"
               >
-                <FaInstagram className="size-4" />
-                @{INSTAGRAM}
+                <FaInstagram
+                  className="size-5 shrink-0"
+                  aria-hidden="true"
+                />
+
+                @yochi_snack
               </a>
 
+              {/* Maps */}
               <a
-                href={MAPS_URL}
+                href="https://www.google.com/maps/search/?api=1&query=Villa+Pamulang+Jl+Pandu+2+Blok+DD1+No.7+Pondok+Benda+Tangerang+Selatan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white"
+                className="flex w-fit items-center gap-3 text-base text-white/75 transition-colors duration-300 hover:text-white"
               >
-                <MapPin className="size-4" />
+                <MapPin
+                  className="size-5 shrink-0"
+                  aria-hidden="true"
+                />
+
                 Lokasi Kami
               </a>
-
             </div>
           </div>
-
         </div>
 
-        <div className="mt-10 border-t border-primary-foreground/20 pt-6 text-center text-sm text-primary-foreground/70">
-          © {new Date().getFullYear()} Yochi Snack. All rights reserved.
+        {/* Bottom */}
+        <div className="mt-12 border-t border-white/20 pt-8 text-center">
+          <p className="text-sm text-white/65 sm:text-base">
+            © 2026 Yochi Snack. All rights reserved.
+          </p>
         </div>
-
       </div>
     </footer>
   )

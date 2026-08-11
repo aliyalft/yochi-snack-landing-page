@@ -56,7 +56,8 @@
 
 :root {
   color-scheme: light;
-  /* Yochi Snack palette: green #2E7D32, light green #81C784, white, cream, yellow accent */
+
+  /* Yochi Snack palette */
   --background: oklch(0.985 0.012 95);
   --foreground: oklch(0.28 0.05 150);
   --card: oklch(1 0 0);
@@ -171,11 +172,18 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
+  /*
+   * PENTING:
+   * Jangan pakai smooth scroll global.
+   * Di mobile anchor yang jauh akan terasa delay.
+   */
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 }
 
@@ -184,6 +192,7 @@
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-16px);
   }
@@ -193,6 +202,7 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
@@ -203,6 +213,7 @@
     opacity: 0;
     transform: translateY(32px) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -225,23 +236,28 @@
       transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
+
   .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
   }
+
   .glass {
     background: color-mix(in oklch, var(--card) 72%, transparent);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
+
   .animate-in-hero {
     animation: heroIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
+
   .ripple {
     position: relative;
     overflow: hidden;
     isolation: isolate;
   }
+
   .ripple::after {
     content: "";
     position: absolute;
@@ -257,6 +273,7 @@
     transform: scale(0);
     z-index: -1;
   }
+
   .ripple:active::after {
     animation: ripple 0.6s ease-out;
   }
@@ -272,6 +289,7 @@
     opacity: 1 !important;
     transform: none !important;
   }
+
   html {
     scroll-behavior: auto;
   }

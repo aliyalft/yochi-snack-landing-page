@@ -1,30 +1,89 @@
-import { Analytics } from '@vercel/analytics/next'
-import type { Metadata, Viewport } from 'next'
-import { Poppins, Fraunces } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from "next"
+import { Fraunces, Poppins } from "next/font/google"
+
+import "./globals.css"
 
 const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-poppins',
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
+  display: "swap",
 })
 
 const fraunces = Fraunces({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-fraunces',
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-fraunces",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: 'Yochi Snack — Cemilan Sehat dari Sayuran, Renyah di Setiap Gigitan',
-  description:
-    'Yochi Snack menghadirkan stik bayam & stik wortel yang renyah, gurih, dan sehat. Dibuat higienis dari bahan berkualitas. Pesan mudah lewat WhatsApp.',
-  generator: 'v0.app',
-}
+  metadataBase: new URL("https://yochisnack.shop"),
 
-export const viewport: Viewport = {
-  themeColor: '#2E7D32',
-  colorScheme: 'light',
+  title: {
+    default: "Yochi Snack | Cemilan Sehat dari Sayuran",
+    template: "%s | Yochi Snack",
+  },
+
+  description:
+    "Yochi Snack menghadirkan stik bayam dan stik wortel yang renyah, gurih, dan dibuat dari bahan berkualitas. Cocok untuk camilan keluarga dan berbagai momen sehari-hari.",
+
+  keywords: [
+    "Yochi Snack",
+    "cemilan sehat",
+    "camilan sehat",
+    "stik bayam",
+    "stik wortel",
+    "snack sayuran",
+    "camilan sayuran",
+    "cemilan anak",
+    "snack sehat anak",
+    "camilan keluarga",
+    "snack homemade",
+    "cemilan homemade",
+    "snack Tangerang Selatan",
+    "cemilan Pamulang",
+    "Yochi Snack Pamulang",
+  ],
+
+  authors: [
+    {
+      name: "Yochi Snack",
+    },
+  ],
+
+  creator: "Yochi Snack",
+  publisher: "Yochi Snack",
+
+  alternates: {
+    canonical: "/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+
+  openGraph: {
+    title: "Yochi Snack | Cemilan Sehat dari Sayuran",
+    description:
+      "Nikmati stik bayam dan stik wortel Yochi Snack yang renyah, gurih, dan dibuat dari bahan berkualitas.",
+    url: "https://yochisnack.shop",
+    siteName: "Yochi Snack",
+    locale: "id_ID",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Yochi Snack | Cemilan Sehat dari Sayuran",
+    description:
+      "Stik bayam dan stik wortel renyah untuk camilan keluarga.",
+  },
 }
 
 export default function RootLayout({
@@ -33,10 +92,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="id" className={`${poppins.variable} ${fraunces.variable} bg-background`}>
-      <body className="font-sans antialiased">
+    <html lang="id">
+      <body
+        className={`${poppins.variable} ${fraunces.variable} font-sans antialiased`}
+      >
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )

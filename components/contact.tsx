@@ -1,213 +1,236 @@
-"use client";
+"use client"
 
 import {
-  MapPin,
+  ArrowUpRight,
   Clock3,
-  Phone,
-  ExternalLink,
-} from "lucide-react";
-
-import { FaInstagram } from "react-icons/fa";
-
-import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/reveal";
-
+  MapPin,
+} from "lucide-react"
 import {
-  INSTAGRAM,
-  INSTAGRAM_URL,
-  MAPS_URL,
-  WA_DISPLAY,
-  waLink,
-} from "@/lib/site";
+  FaInstagram,
+  FaWhatsapp,
+} from "react-icons/fa"
+
+import { Reveal } from "@/components/reveal"
+import { waLink } from "@/lib/site"
 
 export function Contact() {
+  const whatsappLink = waLink(
+    "Halo Yochi Snack, saya ingin bertanya atau memesan produk Yochi Snack."
+  )
+
+  const instagramLink =
+    "https://www.instagram.com/yochi_snack/"
+
+  const mapsLink =
+    "https://www.google.com/maps/search/?api=1&query=Villa+Pamulang+Jl+Pandu+2+Blok+DD1+No.7+Pondok+Benda+Tangerang+Selatan"
+
   return (
     <section
       id="kontak"
-      className="relative overflow-hidden bg-background py-24"
+      className="relative isolate overflow-hidden bg-[#fbf5e8] py-16 sm:py-20 lg:py-24"
     >
-      <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-leaf/10 blur-3xl" />
-      <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-yellow/15 blur-3xl" />
+      {/* Background decoration */}
+      <div
+        className="pointer-events-none absolute -left-40 top-20 size-[30rem] rounded-full bg-primary/7 blur-3xl"
+        aria-hidden="true"
+      />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div
+        className="pointer-events-none absolute -right-40 bottom-0 size-[30rem] rounded-full bg-yellow/10 blur-3xl"
+        aria-hidden="true"
+      />
 
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
+        {/* Main heading */}
         <Reveal>
-          <div className="mx-auto mb-16 max-w-2xl text-center">
-
+          <div className="mx-auto max-w-3xl text-center">
             <span className="inline-flex rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-              Hubungi Kami
+              Kontak &amp; Lokasi
             </span>
 
-            <h2 className="mt-5 font-serif text-4xl font-bold">
-              Yuk, Pesan Sekarang!
+            <h2 className="mt-5 text-balance font-serif text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+              Yuk, Pesan Yochi Snack
             </h2>
 
-            <p className="mt-4 text-muted-foreground">
-              Kami siap melayani pesanan Anda. Hubungi kami melalui WhatsApp
-              atau kunjungi lokasi kami.
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
+              Hubungi kami atau temukan lokasi Yochi Snack dengan mudah.
             </p>
-
           </div>
         </Reveal>
 
-        <div className="grid gap-10 lg:grid-cols-2">
-
+        {/* DESKTOP / TABLET CONTENT */}
+        <div className="mt-12 grid w-full items-start gap-10 lg:mt-14 lg:grid-cols-2 lg:gap-12">
           {/* LEFT */}
+          <Reveal className="w-full">
+            <div className="flex w-full flex-col">
+              {/* Column heading */}
+              <div className="min-h-[160px]">
+                <span className="inline-flex rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
+                  Hubungi Kami
+                </span>
 
-          <Reveal>
+                <h3 className="mt-5 font-serif text-3xl font-bold leading-tight text-foreground sm:text-4xl">
+                  Siap Bantu Pesananmu
+                </h3>
 
-            <div className="glass rounded-3xl border border-border p-8">
-
-              <div className="space-y-7">
-
-                <div className="flex gap-4">
-
-                  <Phone className="text-primary" />
-
-                  <div>
-                    <h4 className="font-semibold">
-                      WhatsApp
-                    </h4>
-
-                    <p className="text-muted-foreground">
-                      {WA_DISPLAY}
-                    </p>
-                  </div>
-
-                </div>
-
-                <div className="flex gap-4">
-
-                  <FaInstagram className="text-primary" />
-
-                  <div>
-
-                    <h4 className="font-semibold">
-                      Instagram
-                    </h4>
-
-                    <p className="text-muted-foreground">
-                      @{INSTAGRAM}
-                    </p>
-
-                  </div>
-
-                </div>
-
-                <div className="flex gap-4">
-
-                  <Clock3 className="text-primary" />
-
-                  <div>
-
-                    <h4 className="font-semibold">
-                      Jam Operasional
-                    </h4>
-
-                    <p className="text-muted-foreground">
-                      08.00 WIB - 16.00 WIB
-                    </p>
-
-                  </div>
-
-                </div>
-
-                <div className="flex gap-4">
-
-                  <MapPin className="text-primary" />
-
-                  <div>
-
-                    <h4 className="font-semibold">
-                      Alamat
-                    </h4>
-
-                    <p className="text-muted-foreground leading-7">
-                      Villa Pamulang
-                      <br />
-                      Jl. Pandu 2 Blok DD1 No.7
-                      <br />
-                      Pondok Benda
-                      <br />
-                      Tangerang Selatan
-                    </p>
-
-                  </div>
-
-                </div>
-
+                <p className="mt-4 max-w-xl text-base leading-8 text-muted-foreground">
+                  Pilih cara yang paling nyaman untuk terhubung dengan Yochi
+                  Snack.
+                </p>
               </div>
 
-              <div className="mt-10 flex flex-wrap gap-4">
-
+              {/* Contact cards */}
+              <div className="mt-6 flex w-full flex-col gap-4">
+                {/* WhatsApp */}
                 <a
-                  href={waLink(
-                    "Halo Yochi Snack, saya ingin memesan produk."
-                  )}
+                  href={whatsappLink}
                   target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex w-full items-center justify-between rounded-[1.75rem] border border-primary/10 bg-white px-5 py-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:px-6"
                 >
-                  <Button size="lg">
-                    Pesan via WhatsApp
-                  </Button>
+                  <div className="flex min-w-0 items-center gap-4">
+                    <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <FaWhatsapp className="size-6" />
+                    </span>
+
+                    <div className="min-w-0">
+                      <p className="font-semibold text-foreground">
+                        WhatsApp
+                      </p>
+
+                      <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+                        087872038056
+                      </p>
+                    </div>
+                  </div>
+
+                  <ArrowUpRight
+                    className="size-5 shrink-0 text-primary transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
                 </a>
 
+                {/* Instagram */}
                 <a
-                  href={INSTAGRAM_URL}
+                  href={instagramLink}
                   target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex w-full items-center justify-between rounded-[1.75rem] border border-primary/10 bg-white px-5 py-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:px-6"
                 >
-                  <Button
-                    variant="outline"
-                    size="lg"
-                  >
-                    Instagram
-                  </Button>
+                  <div className="flex min-w-0 items-center gap-4">
+                    <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <FaInstagram className="size-6" />
+                    </span>
+
+                    <div className="min-w-0">
+                      <p className="font-semibold text-foreground">
+                        Instagram
+                      </p>
+
+                      <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+                        @yochi_snack
+                      </p>
+                    </div>
+                  </div>
+
+                  <ArrowUpRight
+                    className="size-5 shrink-0 text-primary transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
                 </a>
 
+                {/* Hours */}
+                <div className="flex w-full items-center rounded-[1.75rem] border border-primary/10 bg-white px-5 py-5 shadow-sm sm:px-6">
+                  <div className="flex min-w-0 items-center gap-4">
+                    <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Clock3
+                        className="size-6"
+                        aria-hidden="true"
+                      />
+                    </span>
+
+                    <div className="min-w-0">
+                      <p className="font-semibold text-foreground">
+                        Jam Operasional
+                      </p>
+
+                      <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+                        08.00 WIB – 16.00 WIB
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-
             </div>
-
           </Reveal>
 
           {/* RIGHT */}
+          <Reveal delay={100} className="w-full">
+            <div className="flex w-full flex-col">
+              {/* Column heading */}
+              <div className="min-h-[160px]">
+                <span className="inline-flex rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
+                  Temukan Kami
+                </span>
 
-          <Reveal delay={150}>
+                <h3 className="mt-5 font-serif text-3xl font-bold leading-tight text-foreground sm:text-4xl">
+                  Lokasi Yochi Snack
+                </h3>
 
-            <div className="overflow-hidden rounded-3xl border border-border shadow-xl">
+                <p className="mt-4 max-w-xl text-base leading-8 text-muted-foreground">
+                  Lihat lokasi kami di peta atau buka langsung melalui Google
+                  Maps.
+                </p>
+              </div>
 
-              <iframe
-                src="https://www.google.com/maps?q=Villa+Pamulang+Jl+Pandu+2+Blok+DD1+No+7+Pondok+Benda+Tangerang+Selatan&output=embed"
-                width="100%"
-                height="500"
-                loading="lazy"
-                className="border-0"
-              />
+              {/* Map */}
+              <div className="mt-6 w-full overflow-hidden rounded-[1.75rem] border border-primary/10 bg-white shadow-sm">
+                <iframe
+                  title="Lokasi Yochi Snack"
+                  src="https://www.google.com/maps?q=Villa%20Pamulang%20Jl%20Pandu%202%20Blok%20DD1%20No.7%20Pondok%20Benda%20Tangerang%20Selatan&output=embed"
+                  className="h-[300px] w-full border-0 sm:h-[360px] lg:h-[390px]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
 
-            </div>
-
-            <div className="mt-5">
-
-              <a
-                href={MAPS_URL}
-                target="_blank"
-              >
-                <Button
-                  variant="outline"
-                  size="lg"
+                {/* Address */}
+                <a
+                  href={mapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex w-full items-start justify-between gap-4 border-t border-primary/10 px-5 py-5 transition-colors duration-200 hover:bg-primary/[0.025] sm:px-6"
                 >
-                  Buka di Google Maps
-                  <ExternalLink className="ml-2 size-4"/>
-                </Button>
-              </a>
+                  <div className="flex min-w-0 items-start gap-4">
+                    <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <MapPin
+                        className="size-5"
+                        aria-hidden="true"
+                      />
+                    </span>
 
+                    <div>
+                      <p className="font-semibold text-foreground">
+                        Villa Pamulang
+                      </p>
+
+                      <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                        Jl. Pandu 2 Blok DD1 No.7, Pondok Benda,
+                        Tangerang Selatan
+                      </p>
+                    </div>
+                  </div>
+
+                  <ArrowUpRight
+                    className="mt-1 size-5 shrink-0 text-primary transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                </a>
+              </div>
             </div>
-
           </Reveal>
-
         </div>
-
       </div>
-
     </section>
-  );
+  )
 }

@@ -1,6 +1,13 @@
 "use client"
 
-import { useEffect, useRef, useState, type ReactNode } from "react"
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ElementType,
+  type ReactNode,
+} from "react"
+
 import { cn } from "@/lib/utils"
 
 interface RevealProps {
@@ -10,12 +17,18 @@ interface RevealProps {
   as?: "div" | "section" | "article" | "li" | "span"
 }
 
-export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  as = "div",
+}: RevealProps) {
   const ref = useRef<HTMLElement | null>(null)
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     const node = ref.current
+
     if (!node) return
 
     if (typeof IntersectionObserver === "undefined") {
@@ -32,20 +45,34 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
           }
         })
       },
-      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -60px 0px",
+      }
     )
 
     observer.observe(node)
-    return () => observer.disconnect()
+
+    return () => {
+      observer.disconnect()
+    }
   }, [])
 
-  const Tag = as as "div"
+  const Tag = as as ElementType
 
   return (
     <Tag
-      ref={ref as React.RefObject<HTMLDivElement>}
-      className={cn("reveal", visible && "is-visible", className)}
-      style={{ transitionDelay: `${delay}ms` }}
+      ref={(node: HTMLElement | null) => {
+        ref.current = node
+      }}
+      className={cn(
+        "reveal",
+        visible && "is-visible",
+        className
+      )}
+      style={{
+        transitionDelay: `${delay}ms`,
+      }}
     >
       {children}
     </Tag>
