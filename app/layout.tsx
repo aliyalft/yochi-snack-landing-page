@@ -59,6 +59,17 @@ export const metadata: Metadata = {
     canonical: "/",
   },
 
+  icons: {
+    icon: [
+      {
+        url: "/images/iconyochi.png",
+        type: "image/png",
+      },
+    ],
+    shortcut: "/images/iconyochi.png",
+    apple: "/images/iconyochi.png",
+  },
+
   robots: {
     index: true,
     follow: true,
